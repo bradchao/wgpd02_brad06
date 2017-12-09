@@ -5,6 +5,7 @@ var Test02Layer = cc.Layer.extend({
     moveToDown: null,
     moveToUp: null,
     moveToLeft: null,
+    actionArray:null,
     ctor:function () {
         this._super();
 
@@ -28,25 +29,40 @@ var Test02Layer = cc.Layer.extend({
 
         var actionFunction =
             new cc.CallFunc(this.actionCallbackFunc,this);
+        var actionFinish =
+            new cc.CallFunc(this.actionFinish ,this);
+        var delay = new cc.DelayTime(1);
 
-        var actionArray = [];
+        actionArray = [];
         actionArray.push(this.moveToDown);
         actionArray.push(actionFunction);
+        actionArray.push(delay);
         actionArray.push(this.moveToLeft);
         actionArray.push(actionFunction);
         actionArray.push(this.moveToUp);
         actionArray.push(actionFunction);
+        actionArray.push(delay);
         actionArray.push(this.moveToRight);
-        actionArray.push(actionFunction);
+        actionArray.push(actionFinish);
 
         var seq = new cc.Sequence(actionArray); //
 
-        this.sprite.runAction(cc.repeatForever(seq));
+        this.sprite.runAction(cc.repeat(seq,1));
 
         return true;
     },
     actionCallbackFunc: function () {
         cc.log("Callback");
+    },
+    actionFinish: function () {
+
+        var act = cc.moveTo(1, cc.p(cc.winSize.width/2,
+            cc.winSize.height/2));
+        actionArray[2] = act;
+        var seq = new cc.Sequence(actionArray); //
+        this.sprite.stopAction();
+        this.sprite.runAction(cc.repeat(seq,1));
+
     }
 });
 
