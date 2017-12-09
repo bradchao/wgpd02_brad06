@@ -5,6 +5,9 @@ var Test05Layer = cc.Layer.extend({
         this._super();
 
         var test1 = new cc.ParticleFireworks();
+        var test1 = new cc.ParticleFire();
+        var test1 = new cc.ParticleFlower();
+        var test1 = new cc.ParticleExplosion();
 
         test1.setTexture(cc.textureCache.addImage(res.HelloWorld_png));
         test1.setPosition(
