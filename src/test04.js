@@ -1,6 +1,9 @@
 // 補間action: ActionEase
 /*
 1. 最終結果是一樣, 執行時間是一樣
+In : ==> fast
+Out : ==> slow
+InOut ==> fast ==> slow
  */
 var Test04Layer = cc.Layer.extend({
     sprite:null,
