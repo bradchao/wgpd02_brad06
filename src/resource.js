@@ -3,6 +3,7 @@ var res = {
     Star_png : "res/star.png",
     Click : "res/click3.wav",
     Chop : "res/chop.mp3",
+    bg : "res/bg.png",
 };
 
 var g_resources = [];
