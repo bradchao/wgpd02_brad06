@@ -15,6 +15,8 @@
         "src/resource.js",
         "src/test01.js",
         "src/test02.js",
+        "src/test03.js",
+        "src/test04.js",
         "src/app.js"
     ]
 }
