@@ -11,9 +11,19 @@ var Test04Layer = cc.Layer.extend({
         this._super();
 
         this.sprite = new cc.Sprite(res.HelloWorld_png);
-        this.sprite.x = cc.winSize.width/2;
+        this.sprite.x = this.sprite.width/2;
         this.sprite.y = cc.winSize.height/2;
         this.addChild(this.sprite);
+
+        var move = cc.MoveTo.create(4,
+            cc.p(cc.winSize.width-this.sprite.width/2,
+                cc.winSize.height/2));
+        var actRotate = cc.rotateBy(2,360,360);
+
+        var easeIn = new cc.EaseInOut(actRotate, 10);
+
+        this.sprite.runAction(easeIn);
+
 
         return true;
     }
